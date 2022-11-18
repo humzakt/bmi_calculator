@@ -1,0 +1,16 @@
+<label>
+  Height(in)
+  <input type="number" [(ngModel)]="height" placeholder="0" />
+</label>
+
+<label>
+  Weight(lb)
+  <input type="number" [(ngModel)]="weight" placeholder="0" />
+</label>
+
+<button (click)="calculateBMI()">Calculate</button>
+<div *ngIf="bmi">
+  <h2>BMI: {{ bmi }}</h2>
+
+  <h3>{{ result }}</h3>
+</div>
