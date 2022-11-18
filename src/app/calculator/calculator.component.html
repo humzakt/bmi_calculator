@@ -1,16 +1,28 @@
-<label>
-  Height(in)
-  <input type="number" [(ngModel)]="height" placeholder="0" />
-</label>
+<div class="content">
+  <app-slider
+    [value_1]="'imperial'"
+    [value_2]="'metric'"
+    (units)="changeUnits()"
+  >
+  </app-slider>
 
-<label>
-  Weight(lb)
-  <input type="number" [(ngModel)]="weight" placeholder="0" />
-</label>
+  <div class="input">
+    <label>
+      Height({{ units.height }})
+      <input id="height" type="number" [(ngModel)]="height" placeholder="0" />
+    </label>
 
-<button (click)="calculateBMI()">Calculate</button>
-<div *ngIf="bmi">
-  <h2>BMI: {{ bmi }}</h2>
+    <label>
+      Weight({{ units.weight }})
+      <input id="weight" type="number" [(ngModel)]="weight" placeholder="0" />
+    </label>
+  </div>
+  <button id="calculate" (click)="calculateBMI()">Calculate</button>
+  <div class="result">
+    <div *ngIf="bmi">
+      <div id="result">BMI: {{ bmi }}</div>
 
-  <h3>{{ result }}</h3>
+      <p class="comment">{{ result }}</p>
+    </div>
+  </div>
 </div>
