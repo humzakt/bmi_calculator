@@ -19,13 +19,16 @@ export class CalculatorComponent implements OnInit {
 
   calculateBMI() {
     let calculation = 0;
-    if (this.status === 'imperial') {
-      calculation = (703 * this.weight) / this.height ** 2;
+    if (this.height > 0 && this.weight > 0) {
+      if (this.status === 'imperial') {
+        calculation = (703 * this.weight) / this.height ** 2;
+      } else {
+        calculation = this.weight / (this.height / 100) ** 2;
+      }
+      this.bmi = Number(calculation.toFixed(2));
     } else {
-      calculation = this.weight / (this.height / 100) ** 2;
+      this.bmi = -1;
     }
-    this.bmi = Number(calculation.toFixed(2));
-
     this.checkResult();
   }
 
@@ -43,6 +46,9 @@ export class CalculatorComponent implements OnInit {
 
   checkResult() {
     switch (true) {
+      case this.bmi < 0:
+        this.result = 'Invalid Input';
+        break;
       case this.bmi < 18.5:
         this.result = 'Underweight';
         break;
@@ -56,18 +62,10 @@ export class CalculatorComponent implements OnInit {
         this.result = 'Obese';
         break;
       default:
-        this.result = 'Invalid';
+        this.result = 'Invalid Input';
         break;
     }
     // if (this.bmi < 18.5) {
-    //   this.result = 'Underweight';
-    // } else if (this.bmi >= 18.5 && this.bmi <= 24.9) {
-    //   this.result = 'Normal';
-    // } else if (this.bmi >= 25 && this.bmi <= 29.9) {
-    //   this.result = 'Overweight';
-    // } else if (this.bmi >= 30) {
-    //   this.result = 'Obese';
-    // }
   }
 
   constructor() {}

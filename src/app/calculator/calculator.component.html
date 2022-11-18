@@ -9,18 +9,30 @@
   <div class="input">
     <label>
       Height({{ units.height }})
-      <input id="height" type="number" [(ngModel)]="height" placeholder="0" />
+      <input
+        id="height"
+        min="0"
+        type="number"
+        [(ngModel)]="height"
+        placeholder="0"
+      />
     </label>
 
     <label>
       Weight({{ units.weight }})
-      <input id="weight" type="number" [(ngModel)]="weight" placeholder="0" />
+      <input
+        id="weight"
+        min="0"
+        type="number"
+        [(ngModel)]="weight"
+        placeholder="0"
+      />
     </label>
   </div>
   <button id="calculate" (click)="calculateBMI()">Calculate</button>
   <div class="result">
     <div *ngIf="bmi">
-      <div id="result">BMI: {{ bmi }}</div>
+      <div *ngIf="bmi > 0" id="result">BMI: {{ bmi }}</div>
 
       <p class="comment">{{ result }}</p>
     </div>
