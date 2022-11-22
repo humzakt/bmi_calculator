@@ -1,8 +1,12 @@
-# BmiCalculator
+# Bmi Calculator built in Angular.js
+
+## Check Out the running version [here](https://delightful-pegasus-e65f3b.netlify.app/)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.7.
 
 Project design was inspired from [MR Coder](https://www.youtube.com/watch?v=sm4QVfhOP6Y)
+
+
 
 ![alt text](UI.png)
 
